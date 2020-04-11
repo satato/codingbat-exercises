@@ -1,0 +1,22 @@
+PROMPT: 
+Given a string, return a new string made of every other char starting with the first, so "Hello" yields "Hlo".
+
+
+stringBits("Hello") → "Hlo"
+stringBits("Hi") → "H"
+stringBits("Heeololeo") → "Hello"
+
+CODE: 
+public String stringBits(String str) {
+  if(str.length()>0)
+  {
+    String newStr = str.substring(0,1);
+    for(int i=2;i<str.length();i=i+2)
+    {
+      newStr = newStr+str.substring(i,i+1);
+    }
+    return newStr;
+  }
+  else
+    return str;
+}
