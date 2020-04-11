@@ -1,0 +1,33 @@
+PROMPT: 
+Given a string, return a new string where the first and last chars have been exchanged.
+
+
+frontBack("code") → "eodc"
+frontBack("a") → "a"
+frontBack("ab") → "ba"
+
+CODE: 
+public String frontBack(String str) {
+  
+  if(str.length()>1)
+  {
+    char firstChar = str.charAt(0);
+    char lastChar = str.charAt(str.length()-1);
+    if(str.length() == 2)
+    {
+      String strNew = str.replace(firstChar, ' ');
+      strNew = strNew.replaceAll("\\s","");
+      strNew = strNew+firstChar;
+      return strNew;
+    }
+    else
+    {
+      String strMiddle = str.substring(1,str.length()-1);
+      String newStr = lastChar+strMiddle+firstChar;
+      return newStr;
+    }
+  }
+  else
+    return str;
+  
+}
