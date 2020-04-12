@@ -1,3 +1,72 @@
 PROMPT: 
+Given three ints, a b c, one of them is small, one is medium and one is large. Return true if the three values are evenly spaced, so the difference between small and medium is the same as the difference between medium and large.
+
+
+evenlySpaced(2, 4, 6) → true
+evenlySpaced(4, 6, 2) → true
+evenlySpaced(4, 6, 3) → false
 
 CODE: 
+public boolean evenlySpaced(int a, int b, int c)
+{
+  int large = 0;
+  int med = 0;
+  int small = 0;
+  
+  if(a==b&&b==c)
+    return true;
+  else if(a==b||b==c||a==c)
+    return false;
+  else
+  {
+    if(a>b&&a>c)
+    {
+      large = a;
+      if(b>c)
+      {
+        med = b;
+        small = c;
+      }
+      else
+      {
+        med = c;
+        small = b;
+      }
+    }
+    
+    else if(b>c)
+    {
+      large = b;
+      if(a>c)
+      {
+        med = a;
+        small = c;
+      }
+      else
+      {
+        med = c;
+        small = a;
+      }
+    }
+    
+    else
+    {
+      large = c;
+      if(a>b)
+      {
+        med = a;
+        small = b;
+      }
+      else
+      {
+        med = b;
+        small = a;
+      }
+    }
+    
+    if(large-med==med-small)
+      return true;
+    else
+      return false;
+  }
+}
