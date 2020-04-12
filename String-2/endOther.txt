@@ -1,3 +1,33 @@
 PROMPT: 
+Given two strings, return true if either of the strings appears at the very end of the other string, ignoring upper/lower case differences (in other words, the computation should not be "case sensitive"). Note: str.toLowerCase() returns the lowercase version of a string.
+
+
+endOther("Hiabc", "abc") → true
+endOther("AbC", "HiaBc") → true
+endOther("abc", "abXabc") → true
 
 CODE: 
+public boolean endOther(String a, String b)
+{
+  String newA = a.toLowerCase();
+  String newB = b.toLowerCase();
+  
+  if(newA.equals(newB))
+    return true;
+  else if(newA.length()==newB.length())
+    return false;
+  else if(newA.length()>newB.length())
+  {
+    if(newA.substring(newA.length()-newB.length()).equals(newB))
+      return true;
+    else
+      return false;
+  }
+  else
+  {
+    if(newB.substring(newB.length()-newA.length()).equals(newA))
+      return true;
+    else
+      return false;
+  }
+}

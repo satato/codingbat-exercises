@@ -1,3 +1,46 @@
-PROMPT: 
+PROMPT: mixString("abc", "xyz") → "axbycz"
+mixString("Hi", "There") → "HTihere"
+mixString("xxxx", "There") → "xTxhxexre"
 
 CODE: 
+public String mixString(String a, String b)
+{
+  int aLength = a.length();
+  int bLength = b.length();
+  
+  int stringIndex = 0;
+  String newStr = "";
+  
+  if(aLength>bLength)
+  {
+    while(stringIndex<bLength)
+    {
+      newStr = newStr + a.substring(stringIndex,stringIndex+1);
+      newStr = newStr + b.substring(stringIndex,stringIndex+1);
+      stringIndex++;
+    }
+    newStr = newStr + a.substring(stringIndex);
+  }
+  else if(aLength == bLength)
+  {
+    while(stringIndex<aLength)
+    {
+      newStr = newStr + a.substring(stringIndex,stringIndex+1);
+      newStr = newStr + b.substring(stringIndex,stringIndex+1);
+      stringIndex++;
+    }
+  }
+  else
+  {
+    while(stringIndex<aLength)
+    {
+      newStr = newStr + a.substring(stringIndex,stringIndex+1);
+      newStr = newStr + b.substring(stringIndex,stringIndex+1);
+      stringIndex++;
+    }
+    newStr = newStr + b.substring(stringIndex);
+  }
+  
+  return newStr;
+  
+}

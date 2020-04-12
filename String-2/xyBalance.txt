@@ -1,3 +1,36 @@
-PROMPT: 
+PROMPT: We'll say that a String is xy-balanced if for all the 'x' chars in the string, there exists a 'y' char somewhere later in the string. So "xxy" is balanced, but "xyx" is not. One 'y' can balance multiple 'x's. Return true if the given string is xy-balanced.
+
+
+xyBalance("aaxbby") → true
+xyBalance("aaxbb") → false
+xyBalance("yaaxbb") → false
 
 CODE: 
+public boolean xyBalance(String str)
+{
+  if(str.equals(""))
+    return true;
+  else if(str.charAt(str.length()-1)=='y')
+    return true;
+  else if(str.charAt(str.length()-1)=='x')
+    return false;
+  else
+  {
+    boolean balanced = false;
+    int xCount = 0;
+    for(int i=0;i<str.length();i++)
+    {
+      if(str.charAt(i)=='x')
+      {
+        balanced = false;
+        xCount++;
+      }
+      else if(str.charAt(i)=='y')
+        balanced = true;
+    }
+    if(xCount == 0)
+      return true;
+    else
+      return balanced;
+  }
+}

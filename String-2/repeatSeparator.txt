@@ -1,3 +1,27 @@
 PROMPT: 
+Given two strings, word and a separator sep, return a big string made of count occurrences of the word, separated by the separator string.
+
+
+repeatSeparator("Word", "X", 3) → "WordXWordXWord"
+repeatSeparator("This", "And", 2) → "ThisAndThis"
+repeatSeparator("This", "And", 1) → "This"
 
 CODE: 
+public String repeatSeparator(String word, String sep, int count) {
+  if(count==0)
+    return "";
+  else if(count == 1)
+    return word;
+  else
+  {
+    String newStr = "";
+    int index = 0;
+    while(index<count-1)
+    {
+      newStr = newStr + word + sep;
+      index++;
+    }
+    newStr = newStr + word;
+    return newStr;
+  }
+}
